@@ -202,6 +202,33 @@
       letter-spacing: 0.01em;
     }
 
+    /* ─── TJÄNSTER ─── */
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 3rem;
+    }
+    .service-item {
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .service-item:last-child { border-bottom: 1px solid var(--border); }
+    .service-name {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 600px;
+    }
+
     /* ─── CASES ─── */
     .cases-grid {
       display: flex;
@@ -293,6 +320,7 @@
     <a class="nav-logo" href="#hero">FH</a>
     <ul class="nav-links">
       <li><a href="#om-mig">Om mig</a></li>
+      <li><a href="#tjanster">Tjänster</a></li>
       <li><a href="#cases">Cases</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
@@ -342,6 +370,28 @@
       <span class="tag">Teams</span>
       <span class="tag">Power Platform</span>
       <span class="tag">Digital Transformation</span>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- VAD JAG GÖR -->
+  <section id="tjanster">
+    <span class="section-label">Vad jag gör</span>
+    <h2 class="section-title">Tre saker.<br />Alla på riktigt.</h2>
+    <div class="services-list">
+      <div class="service-item">
+        <p class="service-name">AI Adoption</p>
+        <p class="service-desc">Designar och leder utbildningar och adoptionsresor kring Microsoft Copilot och generativ AI. Inte teori — utan konkreta verktyg som används dagen efter.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-name">Säker grund för molnet</p>
+        <p class="service-desc">Innan AI kan flyga måste grunden hålla. Jag kartlägger, härdar och moderniserar Intune-miljöer, identitet och säkerhet.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-name">Rådgivning &amp; arkitektur</p>
+        <p class="service-desc">Från teknisk målbild till genomförande. Jag sitter med ledningen och teknikteamet och säkerställer att de pekar åt samma håll.</p>
+      </div>
     </div>
   </section>
 
