@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fredrik Holmlund – AI Adoption Architect. Hjälper organisationer ta kliv in i AI-eran på ett strukturerat, säkert och mänskligt sätt." />
+  <title>Fredrik Holmlund – AI Adoption Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e0e10;
+      --bg-card:   #161618;
+      --bg-subtle: #1c1c1f;
+      --border:    #2a2a2e;
+      --text:      #e8e8ec;
+      --muted:     #8b8b99;
+      --accent:    #818cf8;
+      --accent-dim:#4f52a3;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-head: 'Space Grotesk', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: rgba(14,14,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--border); }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 6rem 2rem; max-width: 800px; margin: 0 auto; }
+    section + section { padding-top: 4rem; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+    }
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: var(--accent);
+      color: #0e0e10;
+    }
+    .btn-primary:hover { background: #a5b4fc; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .section-intro {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      line-height: 1.75;
+    }
+
+    /* ─── OM MIG ─── */
+    #om-mig .lead {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-top: 2rem;
+    }
+    #om-mig .lead + .lead { margin-top: 1.25rem; color: var(--muted); }
+
+    /* ─── TAGS ─── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── CASES ─── */
+    .cases-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.2s;
+      cursor: default;
+    }
+    .case-card:hover {
+      border-color: var(--accent-dim);
+      transform: translateY(-2px);
+    }
+    .case-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .case-title {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.015em;
+    }
+    .case-body {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ─── KONTAKT ─── */
+    #kontakt { padding-bottom: 8rem; }
+    .contact-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .contact-card p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      section { padding: 4rem 1.25rem; }
+      .contact-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="nav-logo" href="#hero">FH</a>
+    <ul class="nav-links">
+      <li><a href="#om-mig">Om mig</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <span class="hero-label">AI Adoption Architect</span>
+    <h1 class="hero-name">Fredrik<br /><span>Holmlund</span></h1>
+    <p class="hero-sub">
+      Jag hjälper organisationer att ta kliv in i AI-eran på ett strukturerat,
+      säkert och mänskligt sätt — med Microsoft 365 och Modern Work som grund.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#om-mig">Läs mer</a>
+      <a class="btn btn-ghost" href="#kontakt">Ta kontakt</a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- OM MIG -->
+  <section id="om-mig">
+    <span class="section-label">Om mig</span>
+    <h2 class="section-title">Teknik är ett medel,<br />inte ett mål.</h2>
+    <p class="lead">
+      Jag arbetar i skärningspunkten mellan strategi, teknik och människa. Min
+      roll som AI Adoption Architect handlar inte om att sälja in det senaste
+      verktyget — det handlar om att förstå en organisations faktiska vardag
+      och hitta var AI faktiskt gör skillnad.
+    </p>
+    <p class="lead">
+      Med Microsoft 365 och Modern Work som plattform bygger jag lösningar
+      som faktiskt används. Jag jobbar lika bekvämt i en styrelsesal som i en
+      teknisk workshop — och är övertygad om att förändring kräver både
+      tydlighet, tillit och rätt tempo.
+    </p>
+    <div class="tags">
+      <span class="tag">AI Adoption</span>
+      <span class="tag">Microsoft 365</span>
+      <span class="tag">Microsoft Copilot</span>
+      <span class="tag">Change Management</span>
+      <span class="tag">Modern Work</span>
+      <span class="tag">SharePoint</span>
+      <span class="tag">Teams</span>
+      <span class="tag">Power Platform</span>
+      <span class="tag">Digital Transformation</span>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CASES -->
+  <section id="cases">
+    <span class="section-label">Cases</span>
+    <h2 class="section-title">Konkreta problem.<br />Riktiga lösningar.</h2>
+    <p class="section-intro">
+      Inte projektlistor — utan berättelser om vad som faktiskt hände, vad
+      utmaningen var och vad det ledde till.
+    </p>
+
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <span class="case-tag">AI Adoption &amp; Change</span>
+        <h3 class="case-title">Från pilotprojekt till hel organisation på tre månader</h3>
+        <p class="case-body">
+          En stor kommunal verksamhet hade testat Microsoft Copilot i liten skala
+          men fastnat i oron för att rulla ut bredare. Inte för att tekniken inte
+          fungerade — utan för att ingen visste hur man förklarade det för
+          medarbetarna utan att skapa oro. Vi tog fram ett adoptionsramverk
+          anpassat efter verksamhetens kultur, utbildade nyckelpersoner som
+          interna ambassadörer, och satte upp tydliga mätpunkter. Tre månader
+          senare hade 80 % av de berörda använt Copilot aktivt minst en gång
+          i veckan.
+        </p>
+      </div>
+
+      <div class="case-card">
+        <span class="case-tag">Modern Work &amp; Struktur</span>
+        <h3 class="case-title">När alla delar filer men ingen hittar dem</h3>
+        <p class="case-body">
+          Ett medelstort bolag med 400 anställda hade vuxit snabbt och tagit med
+          sig gamla vanor in i Microsoft 365. SharePoint var en labyrint,
+          Teams-kanaler hade blivit en second inbox och ingen visste längre
+          var "sanningen" fanns. Uppdraget var att designa om informations­arkitekturen
+          från grunden — inte bara tekniskt utan utifrån hur folk faktiskt
+          jobbar. Resultatet var en tydlig styrmodell, ett gemensamt språk och
+          en merkbar minskning av interna "var finns filen?"-frågor.
+        </p>
+      </div>
+
+      <div class="case-card">
+        <span class="case-tag">Strategi &amp; Ledning</span>
+        <h3 class="case-title">AI-strategi utan buzzwords</h3>
+        <p class="case-body">
+          En VD ville ha en AI-strategi men var trött på konsultpresentationer
+          fyllda med diagram och tomma löften. Vi startade med ett halvdagsmöte
+          där vi inventerade faktiska smärtpunkter i verksamheten — inte
+          hypotetiska use cases. Därifrån byggde vi en handlingsplan med
+          konkreta prioriteringar, ägarskap och mätbara mål. Strategin fick
+          plats på en A4. Den används fortfarande.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <span class="section-label">Kontakt</span>
+    <h2 class="section-title">Låt oss prata.</h2>
+    <div class="contact-card">
+      <p>
+        Har du en utmaning kring AI-adoption, Modern Work eller digital
+        transformation? Hör av dig — jag svarar alltid.
+      </p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:fredrik@holmlund.one">
+          ✉ fredrik@holmlund.one
+        </a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/fredrik-holmlund-99152195/" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Fredrik Holmlund</p>
+  </footer>
+
+  <script>
+    // Nav border on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
